@@ -1,4 +1,5 @@
 const OAHashMap = require('./OAHash');
+const SCHashMap = require('./SCHash');
 
 const main = () => {
     let lotrData = [
@@ -78,3 +79,14 @@ const anagram = (array) => {
 };
 
 console.log(anagram(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']));
+
+function SCHashTest(){
+    const hashy = new SCHashMap();
+
+    hashy.set('drop7', 'kick');
+    hashy.set('kidney', 'punch');
+    console.log(hashy.getKeyValuePairs());
+
+}
+
+SCHashTest();
