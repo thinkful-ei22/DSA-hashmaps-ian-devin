@@ -22,8 +22,10 @@ const main = () => {
         lotr.set(key[0], element[key[0]]);
     });
     // console.log(lotr.get("Wizard"));
+    lotr.remove("RingBearer");
     console.log(lotr);
     console.log(lotr.getKeyValuePairs());
+    console.log(lotr.get("Elf"));
 };
 
 main();
@@ -59,7 +61,7 @@ const palindrome = string => {
     }
 };
 
-console.log(palindrome('acecarr'));
+// console.log(palindrome('acecarr'));
 
 //--------------ANAGRAM-------------------------------
 
@@ -80,7 +82,7 @@ const anagram = (array) => {
     return wordHashMap.display();
 };
 
-console.log(anagram(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']));
+// console.log(anagram(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']));
 
 function SCHashTest(){
     const hashy = new SCHashMap();
@@ -91,4 +93,4 @@ function SCHashTest(){
 
 }
 
-SCHashTest();
+// SCHashTest();

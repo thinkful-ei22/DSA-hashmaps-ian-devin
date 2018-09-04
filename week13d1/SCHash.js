@@ -21,13 +21,19 @@ class SCHashMap {
     return keyValArr;
   }
 
-  // get(key) {
-  //   const index = this._findSlot(key);
-  //   if (this._slots[index] === undefined) {
-  //       throw new Error('Key error');
-  //   }
-  //   return this._slots[index].value;
-  // }
+  get(key) {
+    const index = this._findSlot(key);
+    const slot = this._slots[index];
+    if (this._slots[index] === undefined) {
+        throw new Error('Key error');
+    }
+    let targetNode = slot.find(key);
+    if(!targetNode) {
+      throw new Error('key error');
+    } else {
+      return targetNode.value
+    } 
+  }
 
   set(key, value) {
     const loadRatio = (this.length) / this._capacity;
@@ -52,15 +58,20 @@ class SCHashMap {
     }
   }
 
-  // remove(key) {
-  //   const index = this._findSlot(key);
-  //   const slot = this._slots[index];
-  //   if (slot === undefined) {
-  //       throw new Error('Key error');
-  //   }
-  //   slot.deleted = true;
-  //   this.length--;
-  // }
+  remove(key) {
+    const index = this._findSlot(key);
+    const slot = this._slots[index];
+    if (slot === undefined) {
+        throw new Error('Key error');
+    }
+    let targetNode = slot.find(key);
+    if(!targetNode) {
+      throw new Error('key error');
+    } else {
+      slot.remove(key);
+      this.length--;
+    } 
+  }
 
   _findSlot(key) {
     const hash = SCHashMap._hashString(key);
