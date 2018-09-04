@@ -78,7 +78,7 @@ class HashMap {
     }
 }
 
-HashMap.MAX_LOAD_RATIO = 0.9;
+HashMap.MAX_LOAD_RATIO = 0.7;
 HashMap.SIZE_RATIO = 3;
 
 const main = () => {
@@ -103,4 +103,37 @@ const main = () => {
     console.log(lotr.get("Wizard"));
 }
 
-main();
+// main();
+
+//----------------------PALINDROME--------------------------------------
+
+//input string
+//output is boolean whether string iteration is palindrome
+
+const palindrome = string => {
+    let stringHashMap = new HashMap();
+    let odd = 0;
+    for (let i = 0; i < string.length; i++) {
+        try {
+            let charCount = stringHashMap.get(string[i]);
+            charCount ++;
+            if(charCount % 2 === 0) {
+                odd --;
+            } else {
+                odd++;
+            }
+            stringHashMap.set(string[i], charCount);
+        } catch {
+            stringHashMap.set(string[i], 1)
+            odd ++;
+        }
+    }
+    if (string.length % 2 === 0 && odd === 0
+        || string.length % 2 === 1 && odd === 1){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+console.log(palindrome('racecr'));
