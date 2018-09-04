@@ -5,7 +5,6 @@ class SCHashMap {
     this.length = 0;
     this._slots = [];
     this._capacity = initialCapacity;
-    this._deleted = 0;
   }
 
   getKeyValuePairs() {
@@ -31,7 +30,7 @@ class SCHashMap {
   // }
 
   set(key, value) {
-    const loadRatio = (this.length + this._deleted + 1) / this._capacity;
+    const loadRatio = (this.length) / this._capacity;
     if (loadRatio > SCHashMap.MAX_LOAD_RATIO) {
         this._resize(this._capacity * SCHashMap.SIZE_RATIO);
     }
@@ -61,7 +60,6 @@ class SCHashMap {
   //   }
   //   slot.deleted = true;
   //   this.length--;
-  //   this._deleted++;
   // }
 
   _findSlot(key) {
@@ -71,20 +69,15 @@ class SCHashMap {
     return hashIndex;
   }
 
-  // _resize(size) {
-  //     const oldSlots = this._slots;
-  //     this._capacity = size;
-  //     // Reset the length - it will get rebuilt as you add the items back
-  //     this.length = 0;
-  //     this._deleted = 0;
-  //     this._slots = [];
+  _resize(size) {
+    const oldKeyValPairs = this.getKeyValuePairs();
+    this._capacity = size;
+    // Reset the length - it will get rebuilt as you add the items back
+    this.length = 0;
+    this._slots = [];
 
-  //     for (const slot of oldSlots) {
-  //         if (slot !== undefined && !slot.deleted) {
-  //             this.set(slot.key, slot.value);
-  //         }
-  //     }
-  // }
+    oldKeyValPairs.forEach(keyValPair => this.set(keyValPair.key, keyValPair.value));
+  }
 
   static _hashString(string) {
       let hash = 5381;

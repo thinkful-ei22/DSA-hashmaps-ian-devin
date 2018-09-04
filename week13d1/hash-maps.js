@@ -15,16 +15,18 @@ const main = () => {
         { HalfElven: 'Arwen' },
         { Ent: 'Treebeard' }
     ];
-    let lotr = new OAHashMap();
+    // let lotr = new OAHashMap();
+    let lotr = new SCHashMap();
     lotrData.forEach(element => {
         let key = Object.keys(element);
         lotr.set(key[0], element[key[0]]);
     });
     // console.log(lotr.get("Wizard"));
     console.log(lotr);
+    console.log(lotr.getKeyValuePairs());
 };
 
-// main();
+main();
 
 //----------------------PALINDROME--------------------------------------
 
