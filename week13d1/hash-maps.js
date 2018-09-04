@@ -107,10 +107,11 @@ const main = () => {
         let key = Object.keys(element);
         lotr.set(key[0], element[key[0]]);
     });
-    console.log(lotr.get("Wizard"));
+    // console.log(lotr.get("Wizard"));
+    console.log(lotr);
 }
 
-// main();
+main();
 
 //----------------------PALINDROME--------------------------------------
 
@@ -164,4 +165,4 @@ const anagram = (array) => {
     return wordHashMap.display();
 }
 
-console.log(anagram(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']));
+// console.log(anagram(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']));
