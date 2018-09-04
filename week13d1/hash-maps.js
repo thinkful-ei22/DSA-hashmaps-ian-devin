@@ -7,7 +7,6 @@ class HashMap {
     }
 
     display() {
-        //pull rest of data.....
         return this._slots.filter(slot => {
             return (slot !== undefined && slot.deleted === false);
         });
