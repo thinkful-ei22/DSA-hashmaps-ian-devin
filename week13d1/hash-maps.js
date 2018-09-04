@@ -6,6 +6,13 @@ class HashMap {
         this._deleted = 0;
     }
 
+    display() {
+        //pull rest of data.....
+        return this._slots.filter(slot => {
+            return (slot !== undefined && slot.deleted === false);
+        });
+    }
+
     get(key) {
         const index = this._findSlot(key);
         if (this._slots[index] === undefined) {
@@ -136,4 +143,25 @@ const palindrome = string => {
     }
 }
 
-console.log(palindrome('racecr'));
+// console.log(palindrome('racecr'));
+
+//--------------ANAGRAM-------------------------------
+
+//input array of strings, some of which may be anagrams
+//output is an array of arrays that consist of anagrams
+
+const anagram = (array) => {
+    let wordHashMap = new HashMap();
+    array.forEach(word => {
+        let sortedKey = word.split('').sort().join('');
+        try {
+            let valuesArray = wordHashMap.get(sortedKey);
+            valuesArray.push(word)
+        } catch {
+            wordHashMap.set(sortedKey, [word])
+        }
+    })
+    return wordHashMap.display();
+}
+
+console.log(anagram(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']));
