@@ -111,7 +111,7 @@ const main = () => {
     console.log(lotr);
 }
 
-main();
+// main();
 
 //----------------------PALINDROME--------------------------------------
 
@@ -165,4 +165,4 @@ const anagram = (array) => {
     return wordHashMap.display();
 }
 
-// console.log(anagram(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']));
+console.log(anagram(['east', 'cars', 'acre', 'arcs', 'teas', 'eats', 'race']));
